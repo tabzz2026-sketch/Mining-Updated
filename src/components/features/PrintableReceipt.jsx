@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { ArrowLeft, Printer } from "lucide-react";
 import { QRCodeCanvas } from "qrcode.react";
 import {
@@ -103,7 +103,7 @@ export default function PrintableReceipt({
             width: 600px;
             min-height: 842px;
             overflow: hidden;
-            border: 2px solid #1f1f1f;
+           
             background: #ffffff;
             color: #000000;
             padding: 9px 17px 14px;
@@ -115,21 +115,23 @@ export default function PrintableReceipt({
 
           .receipt-watermark {
             position: absolute;
+
             z-index: 0;
-            top: 19px;
+            top: 9px;
             right: 14px;
-            bottom: 8px;
-            left: 91px;
+            bottom: 0px;
+            left: 80px;
             display: grid;
             grid-template-columns: repeat(2, max-content);
             align-content: start;
             column-gap: 19px;
-            row-gap: 4px;
+            row-gap: 2px;
             overflow: hidden;
             color: #000000;
             opacity: 0.055;
             pointer-events: none;
             user-select: none;
+            transform:scale(1.20);
           }
 
           .receipt-watermark span {
@@ -281,7 +283,8 @@ export default function PrintableReceipt({
             height: 126px;
             overflow: hidden;
             border: 1px solid #555555;
-            background: transparent;
+            background: #ffffff;
+            z-index: 2;
           }
 
           .receipt-signature-title {
@@ -331,7 +334,7 @@ export default function PrintableReceipt({
           /* --- PRINT MEDIA QUERY --- */
           @media print {
             @page {
-              size: 600px 842px;
+              size: A4 portrait;
               margin: 0;
             }
 
@@ -339,15 +342,19 @@ export default function PrintableReceipt({
             body {
               margin: 0 !important;
               padding: 0 !important;
-              height: 100vh !important;
+              width: 210mm !important;
+              height: 297mm !important;
               overflow: hidden !important; 
               background: #ffffff !important;
             }
-
+            .receipt-watermark{
+                scale: 1.0;
+            }
             .receipt-shell {
               display: block;
-              min-height: auto;
-              height: 100vh;
+              width: 210mm;
+              min-height: 297mm;
+              height: 297mm;
               padding: 0;
               margin: 0;
               background: #ffffff;
@@ -355,8 +362,10 @@ export default function PrintableReceipt({
             }
 
             .receipt-shell-inner {
-              width: 600px;
+              width: 210mm;
+              height: 297mm;
               margin: 0;
+              overflow: hidden;
               transform: none; /* Reset mobile transform for printing */
             }
 
@@ -366,13 +375,15 @@ export default function PrintableReceipt({
 
             .receipt-page {
               width: 600px;
-              height: 842px !important; 
-              max-height: 842px; 
+              min-height: 848.57px;
+              height: 848.57px !important; 
+              max-height: none; 
               margin: 0;
               padding: 9px 17px 14px; 
-              border: 2px solid #1f1f1f;
               box-shadow: none;
               overflow: hidden; 
+              transform: scale(1.320035);
+              transform-origin: top left;
               page-break-inside: avoid; 
               break-inside: avoid;
             }
@@ -402,9 +413,9 @@ export default function PrintableReceipt({
           </div>
 
           <div className="receipt-page">
-            <div className="receipt-watermark" aria-hidden="true">
+            <div className="receipt-watermark" aria-hidden="true" >
               {WATERMARK_ITEMS.map((_, index) => (
-                <span key={index}>https://geologymining.jk.gov.in/</span>
+                <span key={index} >https://geologymining.jk.gov.in/</span>
               ))}
             </div>
 

@@ -261,7 +261,7 @@ export default function VerifyPage() {
             min-height: 100vh;
             margin: 0 auto;
             padding: 18px 14px 16px;
-            background: #ff9700;
+            background: #00bcd4;
           }
 
           .verify-note {
@@ -425,7 +425,7 @@ export default function VerifyPage() {
 
           .verify-detail-table {
             margin-top: 25px;
-            border-top: 1px solid rgba(255, 255, 255, 0.24);
+            border-top: 1px solid rgb(255, 255, 255);
             background: #d17d02;
             color: #ffffff;
             font-size: 11px;
@@ -437,13 +437,13 @@ export default function VerifyPage() {
             min-height: 39px;
             align-items: center;
             box-sizing: border-box;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.22);
-            background: #d47e00;
+            border-bottom: 1px solid rgb(255, 255, 255);
+            background: #159f81;
             padding: 0 7px;
           }
 
           .verify-detail-row.is-light {
-            background: #dd8500;
+            background: rgb(31, 169, 139);
           }
 
           .verify-row-number {
@@ -530,9 +530,9 @@ export default function VerifyPage() {
             max-width: calc(100vw - 24px);
             min-height: 0;
             margin: 0 auto;
-            border: 2px solid #111111;
+            border: 2px solid #ffffff;
             padding: 19px 14px 17px;
-            background: #dc8500;
+            background: #00bcd4;
           }
 
           .verify-expired .verify-note-english {
@@ -561,7 +561,7 @@ export default function VerifyPage() {
             box-sizing: border-box;
             min-height: 480px;
             border: 2px solid #111111;
-            background: #ff9700;
+            background: #00bcd4;
             padding: 17px 14px 29px;
           }
 
@@ -609,7 +609,7 @@ export default function VerifyPage() {
           .verify-expired-table {
             width: 100%;
             border-collapse: collapse;
-            background: #dd8500;
+            background: #00b;
             color: #ffffff;
             font-size: 15px;
             line-height: 19px;
@@ -617,6 +617,11 @@ export default function VerifyPage() {
 
           .verify-expired-table tr {
             border-top: 1px solid rgba(255, 255, 255, 0.85);
+            background: #159f81;
+          }
+
+          .verify-expired-table tr:nth-child(even) {
+            background: rgb(31, 169, 139);
           }
 
           .verify-expired-table th,
